@@ -1,0 +1,54 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+
+contract myNewContract{
+    uint newInt;  //this takes integer values as input.
+    string newString;  //this takes string values as input.
+    bool newBool;  //this takes boolean values as input.
+    address newAddress;  //this takes address as input.
+    
+//function to set Integer values
+    function setNewInt(uint _newInt) public returns (uint){
+        newInt = _newInt;
+        return newInt;
+    }
+    
+//function to set string values
+    function setNewString(string  memory _newString ) public  returns (string memory){
+        newString = _newString;
+        return newString;
+    } 
+    
+//function to set boolean values
+    function setBool(bool _newBool) public returns(bool){
+        newBool = _newBool;
+        return newBool;
+    }
+    
+//function to set address values
+    function setAddress(address _newAddress) public returns (address){
+        newAddress = _newAddress;
+        return newAddress;
+    }
+    
+//function to get Integer values
+    function getNewInt() public view returns (uint){
+        return newInt;
+    }
+    
+//function to get string values
+    function getNewString() public view returns(string memory){
+        return newString;
+    }
+    
+//function to get boolean values
+    function getBool() public view returns(bool){
+        return newBool;
+    }
+    
+//function to get address values
+    function getAddress() public view returns (address){
+        return newAddress;
+    }
+}
