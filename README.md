@@ -1,45 +1,20 @@
-# metacrafters-ETH-PROOF-Beginner
-MyToken
-This is a simple ERC-20 token contract implemented in Solidity. The contract allows for the creation and destruction of tokens, as well as storing information about the token.
+ContractMyToken
+ContractMyToken is a Solidity smart contract that represents a simple token contract. This contract allows for the creation, minting, and burning of tokens.
 
-Requirements
-The contract has public variables that store the details about the coin:
+Features
+Token Name: The contract stores the name of the token as a string in the tokenName variable.
+Token Abbreviation: The contract stores the abbreviation of the token as a string in the tokenAbbrv variable.
+Total Supply: The contract keeps track of the total supply of tokens in the totalSupply variable.
+Balances: The contract uses a mapping named balances to track the token balance of each address.
+Deployment
+The contract is deployed using Solidity version 0.8.0 or a compatible version.
 
-tokenName: A string representing the name of the token.
-abbrv: A string representing the abbreviation of the token.
-totalSupply: An unsigned integer representing the total supply of the token.
-The contract has a mapping of addresses to balances:
+Functions
+Constructor
+The contract constructor is called when the contract is deployed. It takes three parameters: _tokenName, _tokenAbbrv, and _totalSupply. These parameters initialize the token's name, abbreviation, and total supply, respectively. The total supply is assigned to the deploying address.
 
-balances: A mapping that associates addresses with their corresponding token balances.
-The contract has a mint function that increases the total supply and the balance of the "sender" address by a given value:
+mint
+The mint function allows for the creation of additional tokens. It takes two parameters: _to (address) and _value (uint). The function increases the total supply by _value and adds the corresponding amount to the balance of the provided address _to.
 
-Parameters:
-_address: The address to which the tokens will be minted.
-_value: The amount of tokens to be minted.
-Actions:
-Increase the totalSupply by _value.
-Increase the balance of the _address by _value.
-The contract has a burn function that decreases the total supply and the balance of the "sender" address by a given value:
-
-Parameters:
-_address: The address from which the tokens will be burned.
-_value: The amount of tokens to be burned.
-Actions:
-Check if the balance of the _address is greater than or equal to _value.
-If true, decrease the totalSupply by _value.
-Decrease the balance of the _address by _value.
-Usage
-Deploy the MyToken contract to a supported Ethereum network.
-
-Once deployed, you can interact with the contract by calling the following functions:
-
-mint: Creates new tokens and assigns them to a specified address.
-
-Parameters:
-_address: The address to which the tokens will be minted.
-_value: The amount of tokens to be minted.
-burn: Destroys existing tokens by reducing the total supply and the balance of a specified address.
-
-Parameters:
-_address: The address from which the tokens will be burned.
-_value: The amount of tokens to be burned.
+burn
+The burn function allows for the removal of tokens from a specific address. It takes two parameters: _from (address) and _value (uint). The function verifies that the _from address has a sufficient balance to burn the specified _value of tokens. If the balance is sufficient, the total supply is reduced by _value, and the _from address balance is decreased accordingly.
