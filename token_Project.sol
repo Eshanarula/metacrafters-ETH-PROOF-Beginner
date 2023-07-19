@@ -1,7 +1,7 @@
-// SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.0;
 
-contract ContractMyToken {
+contract MyToken {
     string public tokenName;
     string public tokenAbbrv;
     uint public totalSupply;
@@ -22,6 +22,11 @@ contract ContractMyToken {
 
     function burn(address _from, uint _value) public {
         require(balances[_from] >= _value, "Insufficient balance");
+
+        totalSupply -= _value;
+        balances[_from] -= _value;
+    }
+}
 
         totalSupply -= _value;
         balances[_from] -= _value;
