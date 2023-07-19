@@ -1,20 +1,21 @@
-ContractMyToken
-ContractMyToken is a Solidity smart contract that represents a simple token contract. This contract allows for the creation, minting, and burning of tokens.
+MyToken
+This is a simple ERC-20 token contract implemented in Solidity. The contract allows for the creation and destruction of tokens, as well as storing information about the token.
 
-Features
-Token Name: The contract stores the name of the token as a string in the tokenName variable.
-Token Abbreviation: The contract stores the abbreviation of the token as a string in the tokenAbbrv variable.
-Total Supply: The contract keeps track of the total supply of tokens in the totalSupply variable.
-Balances: The contract uses a mapping named balances to track the token balance of each address.
-Deployment
-The contract is deployed using Solidity version 0.8.0 or a compatible version.
-
-Functions
+Requirements
+Variables
+'tokenName': A public string variable that represents the name of the token.
+'tokenAbbrv': A public string variable that represents the abbreviated name of the token.
+' totalSupply': A public uint variable that stores the total supply of the token.
+Mapping
+'balances': A mapping that maps addresses to their token balances. Each address is associated with a uint value representing the token balance.
 Constructor
-The contract constructor is called when the contract is deployed. It takes three parameters: _tokenName, _tokenAbbrv, and _totalSupply. These parameters initialize the token's name, abbreviation, and total supply, respectively. The total supply is assigned to the deploying address.
-
-mint
-The mint function allows for the creation of additional tokens. It takes two parameters: _to (address) and _value (uint). The function increases the total supply by _value and adds the corresponding amount to the balance of the provided address _to.
-
-burn
-The burn function allows for the removal of tokens from a specific address. It takes two parameters: _from (address) and _value (uint). The function verifies that the _from address has a sufficient balance to burn the specified _value of tokens. If the balance is sufficient, the total supply is reduced by _value, and the _from address balance is decreased accordingly.
+'constructor': The constructor function is executed only once during contract deployment. It takes three parameters: '_tokenName' (string), '_tokenAbbrv' (string), and '_totalSupply' (uint). The constructor initializes the tokenName, tokenAbbrv, and totalSupply variables with the provided values. Additionally, it assigns the '_totalSupply' amount of tokens to the deployer's address by setting 'balances[msg.sender]' to '_totalSupply'.
+Functions
+'mint': A public function that allows the creation of new tokens. It takes two parameters: '_to' (address) and '_value' (uint), representing the address to which the tokens will be minted and the amount of tokens to be minted, respectively. Inside the function, it increases the totalSupply by '_value' and adds '_value' tokens to the balance of the _to address.
+'burn,: A public function that allows the destruction of tokens. It takes two parameters: '_from' (address) and '_value' (uint), representing the address from which the tokens will be burned and the amount of tokens to be burned, respectively. The function includes a require statement to check if the balance of '_from' is greater than or equal to '_value'. If the condition is satisfied, it deducts '_value' tokens from the totalSupply and subtracts '_value' tokens from the balance of the '_from' address. If the condition is not met, the transaction will revert with the specified error message, "Insufficient balance".
+Usage
+Deploy the contract to the Ethereum network by calling the constructor function with the desired values for '_tokenName', '_tokenAbbrv', and '_totalSupply'.
+Call the mint function to create new tokens for a specific address by providing the '_to' address and the desired '_value'.
+Call the burn function to destroy tokens from a specific address by providing the '_from' address and the desired '_value'.
+License
+This contract is released under the MIT License. Please see the LICENSE file for more information.
